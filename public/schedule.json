@@ -1,0 +1,145 @@
+{
+  "schedules": [
+    {
+      "name": "Regular",
+      "dates": [],
+      "periods": [
+        {"label":"Zero Period","start":"07:28","end":"08:25","minutes":57},
+        {"label":"Period 1","start":"08:30","end":"09:27","minutes":57},
+        {"label":"Period 2","start":"09:32","end":"10:37","minutes":65},
+        {"label":"Break","start":"10:37","end":"10:47","minutes":10},
+        {"label":"Period 3","start":"10:52","end":"11:49","minutes":57},
+        {"label":"Period 4","start":"11:54","end":"12:51","minutes":57},
+        {"label":"Lunch","start":"12:51","end":"13:26","minutes":35},
+        {"label":"Period 5","start":"13:31","end":"14:28","minutes":57},
+        {"label":"Period 6","start":"14:33","end":"15:30","minutes":57},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "Double Assembly",
+      "dates": ["2025-08-15","2025-10-03","2025-10-31","2025-12-12","2026-01-30","2026-03-12"],
+      "periods": [
+        {"label":"Zero Period","start":"07:37","end":"08:25","minutes":48},
+        {"label":"Period 1","start":"08:30","end":"09:18","minutes":48},
+        {"label":"Period 2A","start":"09:23","end":"10:15","minutes":52},
+        {"label":"Period 2B","start":"10:20","end":"11:12","minutes":52},
+        {"label":"Break","start":"11:12","end":"11:22","minutes":10},
+        {"label":"Period 3","start":"11:27","end":"12:15","minutes":48},
+        {"label":"Period 4","start":"12:20","end":"13:08","minutes":48},
+        {"label":"Lunch","start":"13:08","end":"13:43","minutes":35},
+        {"label":"Period 5","start":"13:48","end":"14:36","minutes":48},
+        {"label":"Period 6","start":"14:41","end":"15:29","minutes":48},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "Late Start / PLC",
+      "dates": ["2025-08-14","2025-08-28","2025-09-11","2025-09-25","2025-10-09","2025-10-23","2025-11-06","2025-11-20","2025-12-04","2025-12-11","2026-01-08","2026-01-22","2026-02-05","2026-02-19","2026-03-26","2026-04-09","2026-04-23","2026-05-07","2026-05-14"],
+      "periods": [
+        {"label":"Prof Dev","start":"07:32","end":"08:32","minutes":60},
+        {"label":"Period 0","start":"08:37","end":"09:25","minutes":48},
+        {"label":"Period 1","start":"09:30","end":"10:18","minutes":48},
+        {"label":"Period 2","start":"10:23","end":"11:13","minutes":50},
+        {"label":"Break","start":"11:13","end":"11:23","minutes":10},
+        {"label":"Period 3","start":"11:28","end":"12:16","minutes":48},
+        {"label":"Period 4","start":"12:21","end":"13:09","minutes":48},
+        {"label":"Lunch","start":"13:09","end":"13:44","minutes":35},
+        {"label":"Period 5","start":"13:49","end":"14:37","minutes":48},
+        {"label":"Period 6","start":"14:42","end":"15:30","minutes":48},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "CAST Block (No Zero) - Day 1",
+      "dates": ["2026-04-07"],
+      "periods": [
+        {"label":"Period 1/2","start":"08:30","end":"10:30","minutes":120},
+        {"label":"Break","start":"10:30","end":"10:45","minutes":15},
+        {"label":"Period 3/4","start":"10:50","end":"12:50","minutes":120},
+        {"label":"Lunch","start":"12:50","end":"13:25","minutes":35},
+        {"label":"Period 5/6","start":"13:30","end":"15:30","minutes":120},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "CAST Block (No Zero) - Day 2",
+      "dates": ["2026-04-08"],
+      "periods": [
+        {"label":"Period 2/1","start":"08:30","end":"10:30","minutes":120},
+        {"label":"Break","start":"10:30","end":"10:45","minutes":15},
+        {"label":"Period 4/3","start":"10:50","end":"12:50","minutes":120},
+        {"label":"Lunch","start":"12:50","end":"13:25","minutes":35},
+        {"label":"Period 6/5","start":"13:30","end":"15:30","minutes":120},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "CAASPP Block 1",
+      "dates": ["2026-04-14","2026-04-16"],
+      "periods": [
+        {"label":"Zero Period","start":"07:28","end":"08:25","minutes":57},
+        {"label":"Period 1","start":"08:30","end":"10:30","minutes":120},
+        {"label":"Break","start":"10:30","end":"10:45","minutes":15},
+        {"label":"Period 3","start":"10:50","end":"12:50","minutes":120},
+        {"label":"Lunch","start":"12:50","end":"13:25","minutes":35},
+        {"label":"Period 5","start":"13:30","end":"15:30","minutes":120},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "CAASPP Block 2",
+      "dates": ["2026-04-15","2026-04-17"],
+      "periods": [
+        {"label":"Zero Period","start":"07:28","end":"08:25","minutes":57},
+        {"label":"Period 2","start":"08:30","end":"10:30","minutes":120},
+        {"label":"Break","start":"10:30","end":"10:45","minutes":15},
+        {"label":"Period 4","start":"10:50","end":"12:50","minutes":120},
+        {"label":"Lunch","start":"12:50","end":"13:25","minutes":35},
+        {"label":"Period 6","start":"13:30","end":"15:30","minutes":120},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "Zero Period CAASPP",
+      "dates": ["2026-04-10","2026-04-13"],
+      "periods": [
+        {"label":"Zero Testing","start":"07:28","end":"09:28","minutes":120},
+        {"label":"Period 1","start":"09:33","end":"10:20","minutes":47},
+        {"label":"Period 2","start":"10:25","end":"11:12","minutes":49},
+        {"label":"Break","start":"11:12","end":"11:27","minutes":15},
+        {"label":"Period 3","start":"11:32","end":"12:19","minutes":47},
+        {"label":"Period 4","start":"12:24","end":"13:11","minutes":47},
+        {"label":"Lunch","start":"13:11","end":"13:46","minutes":35},
+        {"label":"Period 5","start":"13:51","end":"14:38","minutes":47},
+        {"label":"Period 6","start":"14:43","end":"15:30","minutes":47},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    },
+
+    {
+      "name": "Lip Dub & Rally",
+      "dates": ["2026-05-19"],
+      "periods": [
+        {"label":"Zero Period","start":"07:34","end":"08:25","minutes":51},
+        {"label":"Period 1","start":"08:30","end":"09:21","minutes":51},
+        {"label":"Period 2","start":"09:26","end":"10:19","minutes":53},
+        {"label":"Lip Dub & Rally","start":"10:19","end":"11:01","minutes":42},
+        {"label":"Break","start":"11:01","end":"11:11","minutes":10},
+        {"label":"Period 3","start":"11:16","end":"12:07","minutes":51},
+        {"label":"Period 4","start":"12:12","end":"13:03","minutes":51},
+        {"label":"Lunch","start":"13:03","end":"13:38","minutes":35},
+        {"label":"Period 5","start":"13:43","end":"14:34","minutes":51},
+        {"label":"Period 6","start":"14:39","end":"15:30","minutes":51},
+        {"label":"Period 7","start":"15:45","end":"17:30","minutes":105}
+      ]
+    }
+  ]
+}

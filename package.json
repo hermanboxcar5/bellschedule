@@ -1,0 +1,15 @@
+{
+  "name": "bellschedule",
+  "version": "1.0.0",
+  "description": "Bell schedule server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

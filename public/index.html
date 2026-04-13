@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRHS Bell Schedule</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-3xl mx-auto p-4">
+    <h1 class="text-2xl font-bold text-center mb-4 text-red-600">TRHS Bell Schedule</h1>
+
+    <!-- Controls -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
+      <button id="prevDay" class="px-3 py-1 bg-white rounded shadow text-red-600">🡸</button>
+      <button id="todayBtn" class="px-3 py-1 bg-red-600 text-white rounded shadow">Today</button>
+      <button id="nextDay" class="px-3 py-1 bg-white rounded shadow text-red-600">🡺</button>
+      <input type="date" id="datePicker" class="px-2 py-1 rounded border" />
+    </div>
+
+    <div id="date" class="text-center mb-2 text-sm text-gray-600"></div>
+    <div id="scheduleName" class="text-center text-lg font-semibold mb-4"></div>
+
+    <!-- Period Block -->
+    <div id="periods" class="bg-white rounded-2xl shadow divide-y"></div>
+  </div>
+
+  <script>
+    let selectedDate = new Date();
+
+    function formatDate(date) {
+      // FIX: use local date instead of UTC (prevents "tomorrow" bug)
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function formatAMPM(timeStr) {
+      let [h, m] = timeStr.split(":").map(Number);
+      let ampm = h >= 12 ? "PM" : "AM";
+      h = h % 12 || 12;
+      return `${h}:${m.toString().padStart(2, "0")} ${ampm}`;
+    }
+
+    function isWeekend(date) {
+      const day = date.getDay();
+      return day === 0 || day === 6;
+    }
+
+    function render() {
+      const todayStr = formatDate(selectedDate);
+      const realToday = new Date();
+      const realTodayStr = formatDate(realToday);
+      const isToday = todayStr === realTodayStr;
+
+      const dateEl = document.getElementById("date");
+      dateEl.innerText = selectedDate.toDateString();
+      dateEl.classList.toggle("font-bold", isToday);
+
+      document.getElementById("datePicker").value = todayStr;
+
+      const container = document.getElementById("periods");
+      container.innerHTML = "";
+
+      if (isWeekend(selectedDate)) {
+        document.getElementById("scheduleName").innerText = "";
+        container.innerHTML = '<div class="p-4 text-center text-gray-500">No School</div>';
+        return;
+      }
+
+      fetch("/schedule.json")
+        .then(res => res.json())
+        .then(data => {
+          let schedule = data.schedules.find(s => s.dates.includes(todayStr));
+          if (!schedule) schedule = data.schedules.find(s => s.name === "Regular");
+
+          document.getElementById("scheduleName").innerText = schedule.name;
+
+          const now = new Date();
+          const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+          schedule.periods.forEach(p => {
+            const row = document.createElement("div");
+            row.className = "p-3 flex justify-between text-sm";
+
+            const [sh, sm] = p.start.split(":").map(Number);
+            const [eh, em] = p.end.split(":").map(Number);
+            const startMin = sh * 60 + sm;
+            const endMin = eh * 60 + em;
+
+            if (isToday && currentMinutes >= startMin && currentMinutes <= endMin) {
+              row.classList.add("bg-red-100");
+            }
+
+            row.innerHTML = `
+              <div class="font-medium">${p.label}</div>
+              <div>${formatAMPM(p.start)} - ${formatAMPM(p.end)}</div>
+              <div>${p.minutes} min</div>
+            `;
+
+            container.appendChild(row);
+          });
+        });
+    }
+
+    // Controls
+    document.getElementById("prevDay").onclick = () => {
+      selectedDate.setDate(selectedDate.getDate() - 1);
+      render();
+    };
+
+    document.getElementById("nextDay").onclick = () => {
+      selectedDate.setDate(selectedDate.getDate() + 1);
+      render();
+    };
+
+    document.getElementById("todayBtn").onclick = () => {
+      selectedDate = new Date();
+      render();
+    };
+
+    document.getElementById("datePicker").onchange = (e) => {
+      selectedDate = new Date(e.target.value + "T00:00:00");
+      render();
+    };
+
+    render();
+  </script>
+</body>
+</html>
